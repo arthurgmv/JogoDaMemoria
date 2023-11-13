@@ -63,25 +63,58 @@ h2 {
     text-align: center;
     background-color: whitesmoke;
     font-size: 4em;
-    transform: rotateY(180deg);
+    transform: rotateY(0deg);
     transition: 0.25s;
 }
 
-.item::after {
-    content: " ";
+.item::after{
     position: absolute;
     inset: 0;
-    background-color: #545454;
+    content: "";
+    background-color: #444;
+
     transition: 0.25s;
     transform: rotateY(0deg);
     backface-visibility: hidden;
 }
 
-.item.boxOpen {
-    transform: rotateY(0deg);
+.item.boxOpen{
+    transform:  rotateY(180deg);
+}
+.item.boxOpen::after, .boxMatch::after{
+    transform:  rotateY(180deg);
 }
 
-.item.boxOpen::after,
-.item.boxMatch::after{
-    transform: rotateY(180deg);
+
+
+@media (max-width: 600px) {
+    body {
+        min-height: auto;
+    }
+
+    .container {
+        width: 90%; /* Defina a largura desejada para a .container */
+        max-width: 400px; /* Defina a largura máxima conforme necessário */
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .reset {
+        width: 100%;
+    }
+
+    .game {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+
+    .item {
+        width: calc(33.33% - 10px);
+        height: 0;
+        padding-bottom: calc(33.33% - 10px);
+        font-size: 1.5em;
+    }
 }
